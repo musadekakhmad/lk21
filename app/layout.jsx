@@ -4,19 +4,19 @@ import Footer from '../components/layout/Footer';
 import AdsterraLayoutWrapper from '../components/AdsterraLayoutWrapper';
 
 export const metadata = {
-  title: 'Soap2day | Free HD Movies, TV Shows and Web Series',
-  description: 'Soap2day is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+  title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
+  description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
   openGraph: {
-    title: 'Soap2day | Free HD Movies, TV Shows and Web Series',
-    description: 'Soap2day is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
-    url: 'https://Soap2day-us.netlify.app',
-    siteName: 'Soap2day',
+    title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
+    description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+    url: 'https://fmoviestream.netlify.app',
+    siteName: 'Fmovies Stream',
     images: [
       {
-        url: 'https://live.staticflickr.com/65535/54783257648_f9fd991eaf_b.jpg',
+        url: 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg',
         width: 1200,
         height: 630,
-        alt: 'Soap2day - Free HD Movies, TV Shows and Web Series',
+        alt: 'Fmovies Stream - Free HD Movies, TV Shows and Web Series',
       },
     ],
     locale: 'id_ID',
@@ -28,9 +28,9 @@ export const metadata = {
     card: 'summary_large_image',
     site: '@WatchStream123',
     creator: '@WatchStream123',
-    title: 'Soap2day | Free HD Movies, TV Shows and Web Series',
-    description: 'Soap2day is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
-    images: ['https://live.staticflickr.com/65535/54783257648_f9fd991eaf_b.jpg'],
+    title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
+    description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
+    images: ['https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg'],
   },
   // Tambahkan tag meta eksplisit untuk Facebook
   other: {
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
             </main>
             <footer className="w-full max-w-7xl mx-auto px-4 py-8">
               {/* Tempatkan div Native Banner di sini, sebelum Footer */}
-              <div id="container-6157f3c3b504068f7b930e8c3b3b4c61"></div>
+              <div id="container-ce4c42ba51eddb0024dfa25613d99fda"></div>
               <Footer />
             </footer>
           </div>

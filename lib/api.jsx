@@ -1,3 +1,5 @@
+// api.jsx
+
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const apiUrl = process.env.NEXT_PUBLIC_TMDB_API_URL;
 
@@ -185,3 +187,69 @@ export const getTvSeriesByTitle = async (title) => {
     return null;
   }
 };
+
+// Fungsi untuk mendapatkan daftar genre film
+export async function getMovieGenres() {
+  try {
+    const data = await fetchApi('/genre/movie/list');
+    return data.genres;
+  } catch (error) {
+    console.error('Error fetching movie genres:', error);
+    return [];
+  }
+}
+
+// Fungsi untuk mendapatkan daftar genre serial TV
+export async function getTvSeriesGenres() {
+  try {
+    const data = await fetchApi('/genre/tv/list');
+    return data.genres;
+  } catch (error) {
+    console.error('Error fetching TV series genres:', error);
+    return [];
+  }
+}
+
+// Fungsi untuk mendapatkan film berdasarkan genre
+export async function getMoviesByGenre(genreId, page = 1) {
+  try {
+    const data = await fetchApi(`/discover/movie?with_genres=${genreId}&page=${page}`);
+    return data.results;
+  } catch (error) {
+    console.error(`Error fetching movies by genre ID ${genreId}:`, error);
+    return [];
+  }
+}
+
+// Fungsi untuk mendapatkan serial TV berdasarkan genre
+export async function getTvSeriesByGenre(genreId, page = 1) {
+  try {
+    const data = await fetchApi(`/discover/tv?with_genres=${genreId}&page=${page}`);
+    return data.results;
+  } catch (error) {
+    console.error(`Error fetching TV series by genre ID ${genreId}:`, error);
+    return [];
+  }
+}
+
+// Fungsi baru untuk mendapatkan film trending harian
+export async function getTrendingMoviesDaily() {
+  try {
+    const data = await fetchApi('/trending/movie/day');
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching daily trending movies:', error);
+    return [];
+  }
+}
+
+// Fungsi baru untuk mendapatkan serial TV trending harian
+export async function getTrendingTvSeriesDaily() {
+  try {
+    const data = await fetchApi('/trending/tv/day');
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching daily trending TV series:', error);
+    return [];
+  }
+}

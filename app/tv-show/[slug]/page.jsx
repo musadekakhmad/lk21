@@ -1,3 +1,4 @@
+// app/tv-show/[slug]/page.jsx
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { FaYoutube, FaUserCircle, FaStar, FaInfoCircle } from 'react-icons/fa';
@@ -8,14 +9,21 @@ import {
   getTvSeriesReviews,
   searchMoviesAndTv,
   getSimilarTvSeries,
+  getTvSeriesByCategory,
+  getTvSeriesByGenre,
+  getTvSeriesGenres,
 } from '../../../lib/api';
+import TvSeriesList from '../../../components/TvSeriesList';
+import Head from 'next/head';
+
+const CATEGORIES = ['popular', 'top_rated', 'on_the_air', 'airing_today'];
 
 // Utility function to create a slug from a TV show title
 const createSlug = (item) => {
   const title = item.name;
   if (!title) return '';
   const baseSlug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').trim();
-  
+
   let year = '';
   if (item.first_air_date) {
     year = item.first_air_date.substring(0, 4);
@@ -23,107 +31,79 @@ const createSlug = (item) => {
   return `${baseSlug}-${year}`;
 };
 
-// Generate metadata function for SEO and OG tags
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  
-  let tvShowData = null;
-  const id = parseInt(slug, 10);
-
-  const slugParts = slug.split('-');
-  const lastPart = slugParts[slugParts.length - 1];
-  const slugYear = /^\d{4}$/.test(lastPart) ? lastPart : null;
-  const slugTitle = slugYear ? slugParts.slice(0, -1).join('-') : slug;
-
-  if (!isNaN(id) && slugParts.length === 1) {
-    tvShowData = await getTvSeriesById(id);
-  } else {
-    const searchResults = await searchMoviesAndTv(slugTitle.replace(/-/g, ' '));
-    let matchingTvShow = searchResults.find(item => {
-      const itemTitle = item.name?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-      if (!itemTitle) {
-        return false;
-      }
-      const slugTitleClean = slugTitle.toLowerCase().replace(/-/g, '').replace(/[^a-z0-9\s]/g, '');
-      const titleMatch = itemTitle === slugTitleClean ||
-                         itemTitle.replace(/\s/g, '') === slugTitleClean;
-      const yearMatch = !slugYear || (item.first_air_date && item.first_air_date.substring(0, 4) === slugYear);
-      return item.media_type === 'tv' && titleMatch && yearMatch;
-    });
-    if (matchingTvShow) {
-      tvShowData = await getTvSeriesById(matchingTvShow.id);
-    }
-  }
-
-  if (!tvShowData) {
-    return {
-      title: 'Page Not Found',
-      description: 'The TV series page you are looking for could not be found.'
-    };
-  }
-
-  const tvShowTitle = tvShowData.name || 'Untitled TV Series';
-  const tvShowDescription = tvShowData.overview || 'Synopsis not available.';
-  
-  const tvShowImageUrl = tvShowData.backdrop_path ? `https://image.tmdb.org/t/p/w1280${tvShowData.backdrop_path}` : tvShowData.poster_path ? `https://image.tmdb.org/t/p/w1280${tvShowData.poster_path}` : '';
-  
-  const tvShowUrl = `https://soap2day-us.netlify.app/tv-show/${slug}`;
-
-  return {
-    title: `${tvShowTitle} | Soap2day`,
-    description: tvShowDescription,
-    alternates: {
-      canonical: tvShowUrl,
-    },
-    openGraph: {
-      title: `${tvShowTitle} | Soap2day`,
-      description: tvShowDescription,
-      url: tvShowUrl,
-      type: 'website',
-      images: [
-        {
-          url: tvShowImageUrl,
-          alt: tvShowTitle,
-        },
-      ],
-      siteName: 'Soap2day',
-    },
-  };
-}
-
-
+// Main component
 export default async function TvShowPage({ params }) {
   const { slug } = await params;
 
+  // Cek jika slug adalah kategori
+  if (CATEGORIES.includes(slug)) {
+    const series = await getTvSeriesByCategory(slug);
+    const title = slug.replace(/_/g, ' ').toUpperCase();
+
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Head>
+          <title>{`Fmovies - ${title} TV Series`}</title>
+        </Head>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">
+          {title} TV Series
+        </h1>
+        {series && series.length > 0 ? (
+          <TvSeriesList series={series} />
+        ) : (
+          <p className="text-center text-white">Tidak ada serial TV di kategori ini.</p>
+        )}
+      </div>
+    );
+  }
+
+  // Cek jika slug adalah genre (contoh: "genre-12")
+  const genreMatch = slug.match(/^genre-(\d+)$/);
+  if (genreMatch) {
+    const genreId = genreMatch[1];
+    const series = await getTvSeriesByGenre(genreId);
+    const genres = await getTvSeriesGenres();
+    const genreName = genres.find(g => g.id == genreId)?.name || 'Unknown';
+
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Head>
+          <title>{`Fmovies - ${genreName} TV Series`}</title>
+        </Head>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">
+          {genreName} TV Series
+        </h1>
+        {series && series.length > 0 ? (
+          <TvSeriesList series={series} />
+        ) : (
+          <p className="text-center text-white">Tidak ada serial TV di genre ini.</p>
+        )}
+      </div>
+    );
+  }
+
+  // --- Logika untuk halaman detail serial TV (sudah ada di kode Anda) ---
   let tvShowData = null;
   const id = parseInt(slug, 10);
 
-  // Separate the slug into title and year, if a year exists
   const slugParts = slug.split('-');
   const lastPart = slugParts[slugParts.length - 1];
   const slugYear = /^\d{4}$/.test(lastPart) ? lastPart : null;
   const slugTitle = slugYear ? slugParts.slice(0, -1).join('-') : slug;
 
-  // Check if the slug is a numeric ID
   if (!isNaN(id) && slugParts.length === 1) {
     tvShowData = await getTvSeriesById(id);
   } else {
-    // Search for the TV series based on the title part of the slug
     const searchResults = await searchMoviesAndTv(slugTitle.replace(/-/g, ' '));
-    
+
     let matchingTvShow = searchResults.find(item => {
-      const itemTitle = item.name?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-      if (!itemTitle) {
-        return false;
-      }
+      const itemName = item.name?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+      if (!itemName) return false;
 
       const slugTitleClean = slugTitle.toLowerCase().replace(/-/g, '').replace(/[^a-z0-9\s]/g, '');
-
-      const titleMatch = itemTitle === slugTitleClean ||
-                         itemTitle.replace(/\s/g, '') === slugTitleClean;
-
+      const titleMatch = itemName === slugTitleClean || itemName.replace(/\s/g, '') === slugTitleClean;
       const yearMatch = !slugYear || (item.first_air_date && item.first_air_date.substring(0, 4) === slugYear);
-      
+
       return item.media_type === 'tv' && titleMatch && yearMatch;
     });
 
@@ -136,7 +116,7 @@ export default async function TvShowPage({ params }) {
     notFound();
   }
 
-  const [videos, credits, reviews, similarTvShows] = await Promise.all([
+  const [videos, credits, reviews, similarTvSeries] = await Promise.all([
     getTvSeriesVideos(tvShowData.id),
     getTvSeriesCredits(tvShowData.id),
     getTvSeriesReviews(tvShowData.id),
@@ -148,9 +128,8 @@ export default async function TvShowPage({ params }) {
 
   const trailer = videos && videos.length > 0 ? videos.find((video) => video.site === 'YouTube' && video.type === 'Trailer') : null;
   const cast = credits.cast.slice(0, 10);
-  const crew = credits.crew.filter(member => ['Director', 'Writer', 'Screenplay'].includes(member.job)).slice(0, 5);
+  const crew = credits.crew.filter(member => ['Creator', 'Director', 'Writer', 'Screenplay'].includes(member.job)).slice(0, 5);
   const userReviews = reviews ? reviews.slice(0, 5) : [];
-  const seasons = tvShowData.seasons;
 
   return (
     <div className="min-h-screen bg-slate-900 text-white pb-8">
@@ -198,10 +177,10 @@ export default async function TvShowPage({ params }) {
                 {tvShowData.vote_average.toFixed(1)} / 10
               </span>
               <span className="text-gray-400 text-sm">
-                {tvShowData.number_of_seasons} seasons
+                {tvShowData.first_air_date?.substring(0, 4)}
               </span>
               <span className="text-gray-400 text-sm">
-                {tvShowData.first_air_date?.substring(0, 4)}
+                {tvShowData.number_of_seasons ? `${tvShowData.number_of_seasons} Seasons` : 'N/A'}
               </span>
             </div>
 
@@ -222,8 +201,8 @@ export default async function TvShowPage({ params }) {
               </div>
               <div>
                 <p>
-                  <strong>Created by:</strong>{' '}
-                  {tvShowData.created_by?.map((creator) => creator.name).join(', ') || 'N/A'}
+                  <strong>Creator:</strong>{' '}
+                  {crew.find(member => member.job === 'Creator')?.name || 'N/A'}
                 </p>
                 <p>
                   <strong>Website:</strong> <a href={tvShowData.homepage} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{tvShowData.homepage}</a>
@@ -235,67 +214,6 @@ export default async function TvShowPage({ params }) {
       </div>
 
       <div className="p-4 sm:p-8 md:p-12">
-        {/* Crew Section */}
-        {crew.length > 0 && (
-          <div className="mt-8 border-t border-gray-700 pt-8">
-            <h2 className="text-2xl font-bold mb-4 text-blue-400">Key Crew</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {crew.map((member) => (
-                <div key={member.credit_id} className="text-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-2 border-2 border-gray-600">
-                    {member.profile_path ? (
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w200${member.profile_path}`}
-                        alt={member.name}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-700 flex items-center justify-center">
-                        <FaUserCircle className="text-4xl text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  <p className="text-xs font-semibold text-white truncate">{member.name}</p>
-                  <p className="text-[10px] text-gray-400 truncate">{member.job}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Seasons Section */}
-        {seasons && seasons.length > 0 && (
-          <div className="mt-8 border-t border-gray-700 pt-8">
-            <h2 className="text-2xl font-bold mb-4 text-blue-400">Seasons</h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
-              {seasons.sort((a,b) => a.season_number - b.season_number).map(season => (
-                <div key={season.id} className="flex-shrink-0 w-32 md:w-48 text-center">
-                  <div className="w-32 md:w-48 h-auto rounded-lg overflow-hidden mb-2 shadow-lg">
-                    {season.poster_path ? (
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w200${season.poster_path}`}
-                        alt={`Poster ${season.name}`}
-                        width={200}
-                        height={300}
-                        className="w-full h-full object-cover"
-                        unoptimized={!season.poster_path}
-                      />
-                    ) : (
-                      <div className="w-full h-48 md:h-64 bg-gray-700 flex items-center justify-center rounded-lg">
-                        <FaInfoCircle className="text-4xl text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  <p className="text-xs md:text-sm font-semibold text-white truncate">{season.name}</p>
-                  <p className="text-[10px] md:text-xs text-gray-400">{season.episode_count} episodes</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Cast Section */}
         <div className="mt-8 border-t border-gray-700 pt-8">
           <h2 className="text-2xl font-bold mb-4 text-blue-400">Main Cast</h2>
@@ -362,12 +280,12 @@ export default async function TvShowPage({ params }) {
           )}
         </div>
 
-        {/* Similar TV Shows Section */}
-        {similarTvShows && similarTvShows.length > 0 && (
+        {/* Similar TV Series Section */}
+        {similarTvSeries && similarTvSeries.length > 0 && (
           <div className="mt-8 border-t border-gray-700 pt-8">
-            <h2 className="text-2xl font-bold mb-4 text-blue-400">Similar TV Shows</h2>
+            <h2 className="text-2xl font-bold mb-4 text-blue-400">Similar TV Series</h2>
             <div className="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
-              {similarTvShows.slice(0, 10).map(item => {
+              {similarTvSeries.slice(0, 10).map(item => {
                 const itemSlug = createSlug(item);
                 const itemUrl = `/tv-show/${itemSlug}`;
 

@@ -1,3 +1,5 @@
+// app/movie/[slug]/page.jsx
+
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { FaYoutube, FaUserCircle, FaStar } from 'react-icons/fa';
@@ -8,7 +10,14 @@ import {
   getMovieReviews,
   searchMoviesAndTv,
   getSimilarMovies,
+  getMoviesByCategory,
+  getMoviesByGenre,
+  getMovieGenres,
 } from '../../../lib/api';
+import MovieList from '../../../components/MovieList';
+import Head from 'next/head';
+
+const CATEGORIES = ['popular', 'now_playing', 'upcoming', 'top_rated'];
 
 // Utility function to create a slug from a movie title
 const createSlug = (item) => {
@@ -23,105 +32,77 @@ const createSlug = (item) => {
   return `${baseSlug}-${year}`;
 };
 
-// generateMetadata function for SEO and OG tags
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  
-  let movieData = null;
-  const id = parseInt(slug, 10);
-
-  const slugParts = slug.split('-');
-  const lastPart = slugParts[slugParts.length - 1];
-  const slugYear = /^\d{4}$/.test(lastPart) ? lastPart : null;
-  const slugTitle = slugYear ? slugParts.slice(0, -1).join('-') : slug;
-
-  if (!isNaN(id) && slugParts.length === 1) {
-    movieData = await getMovieById(id);
-  } else {
-    const searchResults = await searchMoviesAndTv(slugTitle.replace(/-/g, ' '));
-    let matchingMovie = searchResults.find(item => {
-      const itemTitle = item.title?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-      if (!itemTitle) {
-        return false;
-      }
-      const slugTitleClean = slugTitle.toLowerCase().replace(/-/g, '').replace(/[^a-z0-9\s]/g, '');
-      const titleMatch = itemTitle === slugTitleClean ||
-                         itemTitle.replace(/\s/g, '') === slugTitleClean;
-      const yearMatch = !slugYear || (item.release_date && item.release_date.substring(0, 4) === slugYear);
-      return item.media_type === 'movie' && titleMatch && yearMatch;
-    });
-    if (matchingMovie) {
-      movieData = await getMovieById(matchingMovie.id);
-    }
-  }
-
-  if (!movieData) {
-    return {
-      title: 'Page Not Found',
-      description: 'The movie page you are looking for was not found.'
-    };
-  }
-
-  const movieTitle = movieData.title || 'Untitled Movie';
-  const movieDescription = movieData.overview || 'Synopsis not available.';
-  
-  const movieImageUrl = movieData.backdrop_path ? `https://image.tmdb.org/t/p/w1280${movieData.backdrop_path}` : movieData.poster_path ? `https://image.tmdb.org/t/p/w1280${movieData.poster_path}` : '';
-  
-  const movieUrl = `https://Soap2day-us.netlify.app/movie/${slug}`;
-
-  return {
-    title: `${movieTitle} | Soap2day`,
-    description: movieDescription,
-    alternates: {
-      canonical: movieUrl,
-    },
-    openGraph: {
-      title: `${movieTitle} | Soap2day`,
-      description: movieDescription,
-      url: movieUrl,
-      type: 'website',
-      images: [
-        {
-          url: movieImageUrl,
-          alt: movieTitle,
-        },
-      ],
-      siteName: 'Soap2day',
-    },
-  };
-}
-
-
+// Main component
 export default async function MoviePage({ params }) {
   const { slug } = await params;
 
+  // Cek jika slug adalah kategori
+  if (CATEGORIES.includes(slug)) {
+    const movies = await getMoviesByCategory(slug);
+    const title = slug.replace(/_/g, ' ').toUpperCase();
+
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Head>
+          <title>{`Fmovies - ${title} Movies`}</title>
+        </Head>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">
+          {title} Movies
+        </h1>
+        {movies && movies.length > 0 ? (
+          <MovieList movies={movies} />
+        ) : (
+          <p className="text-center text-white">Tidak ada film di kategori ini.</p>
+        )}
+      </div>
+    );
+  }
+
+  // Cek jika slug adalah genre (contoh: "genre-28")
+  const genreMatch = slug.match(/^genre-(\d+)$/);
+  if (genreMatch) {
+    const genreId = genreMatch[1];
+    const movies = await getMoviesByGenre(genreId);
+    const genres = await getMovieGenres();
+    const genreName = genres.find(g => g.id == genreId)?.name || 'Unknown';
+
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Head>
+          <title>{`Fmovies - ${genreName} Movies`}</title>
+        </Head>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">
+          {genreName} Movies
+        </h1>
+        {movies && movies.length > 0 ? (
+          <MovieList movies={movies} />
+        ) : (
+          <p className="text-center text-white">Tidak ada film di genre ini.</p>
+        )}
+      </div>
+    );
+  }
+
+  // --- Logika untuk halaman detail film (sudah ada di kode Anda) ---
   let movieData = null;
   const id = parseInt(slug, 10);
 
-  // Separate the slug into title and year, if a year exists
   const slugParts = slug.split('-');
   const lastPart = slugParts[slugParts.length - 1];
   const slugYear = /^\d{4}$/.test(lastPart) ? lastPart : null;
   const slugTitle = slugYear ? slugParts.slice(0, -1).join('-') : slug;
 
-  // Check if the slug is a numeric ID
   if (!isNaN(id) && slugParts.length === 1) {
     movieData = await getMovieById(id);
   } else {
-    // Search for the movie based on the title part of the slug
     const searchResults = await searchMoviesAndTv(slugTitle.replace(/-/g, ' '));
     
     let matchingMovie = searchResults.find(item => {
       const itemTitle = item.title?.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-      if (!itemTitle) {
-        return false;
-      }
+      if (!itemTitle) return false;
 
       const slugTitleClean = slugTitle.toLowerCase().replace(/-/g, '').replace(/[^a-z0-9\s]/g, '');
-
-      const titleMatch = itemTitle === slugTitleClean ||
-                         itemTitle.replace(/\s/g, '') === slugTitleClean;
-
+      const titleMatch = itemTitle === slugTitleClean || itemTitle.replace(/\s/g, '') === slugTitleClean;
       const yearMatch = !slugYear || (item.release_date && item.release_date.substring(0, 4) === slugYear);
       
       return item.media_type === 'movie' && titleMatch && yearMatch;
