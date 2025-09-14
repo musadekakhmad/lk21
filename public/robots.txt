@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fmoviestream.netlify.app/
+Sitemap: https://123movies-us.netlify.app/

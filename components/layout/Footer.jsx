@@ -17,7 +17,7 @@ export default function Footer() {
           </a>{' '}
           & Next.js{' '}
           <a
-            href="https://123movies-us.netlify.app"
+            href="https://123movies123.vercel.app"
             className="text-blue-500 hover:text-blue-400 transition-colors duration-300"
             target="_blank"
             rel="noopener noreferrer"

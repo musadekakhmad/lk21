@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: '123Movies | Stream Movies, TV Shows and Web Series Free HD',
     description: '123Movies is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
-    url: 'https://fmoviestream.netlify.app',
+    url: 'https://123movies123.vercel.app',
     siteName: '123Movies',
     images: [
       {
