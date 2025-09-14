@@ -4,33 +4,31 @@ import Footer from '../components/layout/Footer';
 import AdsterraLayoutWrapper from '../components/AdsterraLayoutWrapper';
 
 export const metadata = {
-  title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
-  description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+  title: '123Movies | Stream Movies, TV Shows and Web Series Free HD ',
+  description: '123Movies is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
   openGraph: {
-    title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
-    description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+    title: '123Movies | Stream Movies, TV Shows and Web Series Free HD',
+    description: '123Movies is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
     url: 'https://fmoviestream.netlify.app',
-    siteName: 'Fmovies Stream',
+    siteName: '123Movies',
     images: [
       {
-        url: 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg',
+        url: 'https://live.staticflickr.com/65535/54786910520_0740342bed_b.jpg',
         width: 1200,
         height: 630,
-        alt: 'Fmovies Stream - Free HD Movies, TV Shows and Web Series',
+        alt: '123Movies - Free HD Movies, TV Shows and Web Series',
       },
     ],
-    locale: 'id_ID',
+    locale: 'en_US',
     type: 'website',
-    // Properti yang diperlukan untuk Facebook Debugger
-    appId: '100074345305108',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@WatchStream123',
     creator: '@WatchStream123',
-    title: 'Fmovies Stream | Free HD Movies, TV Shows and Web Series',
-    description: 'Fmovies Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
-    images: ['https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg'],
+    title: '123Movies | Stream Movies, TV Shows and Web Series Free HD',
+    description: '123Movies is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
+    images: ['https://live.staticflickr.com/65535/54786910520_0740342bed_b.jpg'],
   },
   // Tambahkan tag meta eksplisit untuk Facebook
   other: {
@@ -40,7 +38,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id">
+    <html lang="en">
       <body>
         <AdsterraLayoutWrapper>
           <div className="flex flex-col min-h-screen bg-slate-900">

@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <>
       <Head>
-        <title>Fmovies Stream - Daily Trending</title>
+        <title>123Movies - Daily Trending</title>
       </Head>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">Daily Trending</h1>

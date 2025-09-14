@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-gray-400 py-6 text-center rounded-lg shadow-xl">
       <div className="container mx-auto px-4">
-        <p>&copy; {year} Fmovies Stream. All rights reserved.</p>
+        <p>&copy; {year} 123Movies. All rights reserved.</p>
         <p className="mt-2 text-sm">
           Powered by{' '}
           <a
@@ -17,12 +17,12 @@ export default function Footer() {
           </a>{' '}
           & Next.js{' '}
           <a
-            href="https://fmoviestream.netlify.app"
+            href="https://123movies-us.netlify.app"
             className="text-blue-500 hover:text-blue-400 transition-colors duration-300"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Fmovies Stream
+            123Movies
           </a>
         </p>
       </div>

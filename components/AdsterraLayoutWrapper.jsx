@@ -1,22 +1,12 @@
 "use client";
 
 import { useEffect } from 'react';
-// Asumsi: file `adsterra.js` tidak ada, jadi kita hapus import-nya untuk memperbaiki error kompilasi.
-// Ini mungkin perlu disesuaikan jika file tersebut benar-benar ada dan berisi logika penting.
-// import { handleAdsterraClick } from '../utils/adsterra';
 
-// Komponen khusus untuk menangani klik secara global dan menampilkan Native Banner, Social Bar, dan Popunder Adsterra.
 export default function AdsterraLayoutWrapper({ children }) {
   useEffect(() => {
-    // Memastikan window tersedia sebelum memuat skrip iklan dan event listener.
     if (typeof window !== 'undefined') {
-      // Fungsi untuk memanggil logika adsterra saat ada klik di mana saja.
       const handleClick = (e) => {
-        // Dummy targetUrl dibuat karena logika handleAdsterraClick memerlukannya.
-        // Kita menggunakan URL halaman saat ini.
         const targetUrl = window.location.href;
-        // Kita tidak bisa memanggil fungsi `handleAdsterraClick` karena file-nya tidak ditemukan.
-        // handleAdsterraClick(e, targetUrl);
       };
   
       window.addEventListener('click', handleClick);
@@ -42,7 +32,6 @@ export default function AdsterraLayoutWrapper({ children }) {
       socialBarScript.async = true;
       document.body.appendChild(socialBarScript);
   
-      // Cleanup function untuk menghapus event listener dan skrip saat komponen di-unmount.
       return () => {
         window.removeEventListener('click', handleClick);
         document.body.removeChild(nativeBannerScript);
@@ -50,13 +39,11 @@ export default function AdsterraLayoutWrapper({ children }) {
         document.body.removeChild(socialBarScript);
       };
     }
-  }, []); // Dependensi kosong memastikan efek hanya berjalan sekali saat mount.
+  }, []);
 
   return (
     <>
       {children}
-      {/* Container untuk iklan Native Banner */}
-      <div id="container-ce4c42ba51eddb0024dfa25613d99fda"></div>
     </>
   );
 }

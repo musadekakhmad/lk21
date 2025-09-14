@@ -5,14 +5,19 @@
 import Link from 'next/link';
 import { FaVideo, FaChevronDown } from 'react-icons/fa';
 import { getMovieGenres, getTvSeriesGenres } from '../../lib/api';
-import SearchBar from '../SearchBar'; // Pastikan path ini benar
+import SearchBar from '../SearchBar';
 import { useEffect, useState } from 'react';
 
 // Reusable class for dropdown items for consistency
-const dropdownItemClass = "block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-red-600 hover:text-white transition-colors duration-200";
+const dropdownItemClass = "block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-red-800 hover:text-white transition-colors duration-200";
 
 // Reusable class for sub-dropdown triggers
-const subDropdownTriggerClass = "flex justify-between items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-slate-700 cursor-pointer";
+const subDropdownTriggerClass = "flex justify-between items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-blue-700 cursor-pointer";
+
+// Utility function to create a slug from a genre name
+const createSlug = (name) => {
+  return name.toLowerCase().replace(/\s+/g, '-');
+};
 
 export default function Navbar() {
   const [movieGenres, setMovieGenres] = useState([]);
@@ -67,7 +72,7 @@ export default function Navbar() {
         onMouseLeave={handleMouseLeave}
       >
         <button
-          className="flex items-center text-white hover:text-red-500 transition-colors duration-200 font-bold"
+          className="flex items-center text-white hover:text-green-600 transition-colors duration-200 font-bold"
         >
           {title} <FaChevronDown className={`ml-1 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -99,7 +104,7 @@ export default function Navbar() {
                         {genres.map((genre) => (
                           <Link
                             key={genre.id}
-                            href={`/${genrePathPrefix}/genre-${genre.id}`}
+                            href={`/${genrePathPrefix}/genre/${createSlug(genre.name)}`}
                             className={dropdownItemClass}
                             onClick={() => { setIsOpen(false); setIsGenresOpen(false); }} // Close all on item click
                           >
@@ -122,12 +127,14 @@ export default function Navbar() {
     <nav className="bg-slate-900 p-4 sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <Link href="/about" className="flex items-center text-white text-2xl font-bold hover:text-blue-400 transition-colors duration-200">
-            <FaVideo className="text-red-500 mr-2" />
-            <span>FMovies Stream</span>
+          <Link href="/about" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
+            <FaVideo className="text-white mr-2 group-hover:text-yellow-200 transition-colors" />
+            <span className="rainbow-text hover:text-white transition-colors">
+              123Movies
+            </span>
           </Link>
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/" className="text-white hover:text-green-500 transition-colors duration-200 font-bold">
+            <Link href="/" className="text-white font-bold hover:text-green-600 transition-colors">
               Home
             </Link>
             <DropdownMenu
@@ -162,6 +169,44 @@ export default function Navbar() {
         </div>
         {/* ---------------------------------------- */}
       </div>
+      
+      {/* CSS untuk efek rainbow */}
+      <style jsx>{`
+        .rainbow-text {
+          font-size: 1.8rem;
+          background-image: linear-gradient(
+            to right,
+            #ff0000, #ff8000, #ffff00, #80ff00, 
+            #00ff00, #00ff80, #00ffff, #0080ff, 
+            #0000ff, #8000ff, #ff00ff, #ff0080
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          background-size: 300% 300%;
+          animation: rainbow 4s ease infinite;
+        }
+        
+        .rainbow-hover:hover {
+          background-image: linear-gradient(
+            to right,
+            #ff0000, #ff8000, #ffff00, #80ff00, 
+            #00ff00, #00ff80, #00ffff, #0080ff, 
+            #0000ff, #8000ff, #ff00ff, #ff0080
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          background-size: 300% 300%;
+          animation: rainbow 2s ease infinite;
+        }
+        
+        @keyframes rainbow {
+          0% { background-position: 0% 50% }
+          50% { background-position: 100% 50% }
+          100% { background-position: 0% 50% }
+        }
+      `}</style>
     </nav>
   );
 }
