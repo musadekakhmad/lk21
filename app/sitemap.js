@@ -9,7 +9,7 @@ import {
   getMoviesByGenre
 } from '../lib/api';
 
-const BASE_URL = 'https://fmoviestream.netlify.app';
+const BASE_URL = 'https://123movies123.page.dev';
 
 // Fungsi utilitas untuk membuat slug
 const createSlug = (name, year) => {

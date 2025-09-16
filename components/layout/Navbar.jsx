@@ -3,7 +3,7 @@
 "use client";
 
 import Link from 'next/link';
-import { FaVideo, FaChevronDown } from 'react-icons/fa';
+import { FaVideo, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa';
 import { getMovieGenres, getTvSeriesGenres } from '../../lib/api';
 import SearchBar from '../SearchBar';
 import { useEffect, useState } from 'react';
@@ -22,6 +22,7 @@ const createSlug = (name) => {
 export default function Navbar() {
   const [movieGenres, setMovieGenres] = useState([]);
   const [tvGenres, setTvGenres] = useState([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -77,7 +78,7 @@ export default function Navbar() {
           {title} <FaChevronDown className={`ml-1 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
         {isOpen && (
-          <div className="absolute left-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg z-20">
+          <div className="absolute left-0 mt-2 w-48 bg-slate-800 dark:bg-gray-800 rounded-md shadow-lg z-20">
             <div className="py-1">
               {categories.map((category) => (
                 <Link
@@ -99,7 +100,7 @@ export default function Navbar() {
                     Genres <FaChevronDown className={`ml-1 transition-transform duration-200 ${isGenresOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isGenresOpen && (
-                    <div className="absolute top-0 left-full mt-0 w-48 bg-slate-800 rounded-md shadow-lg z-30 ml-1">
+                    <div className="absolute top-0 left-full mt-0 w-48 bg-slate-800 dark:bg-gray-800 rounded-md shadow-lg z-30 ml-1">
                       <div className="py-1 max-h-60 overflow-y-auto">
                         {genres.map((genre) => (
                           <Link
@@ -124,7 +125,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-slate-900 p-4 sticky top-0 z-50 shadow-lg">
+    <nav className="bg-slate-900 dark:bg-gray-900 p-4 sticky top-0 z-50 shadow-lg transition-colors duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <Link href="/about" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
@@ -161,14 +162,141 @@ export default function Navbar() {
             />
           </div>
         </div>
-        {/* --- PERBAIKAN UNTUK KOTAK PENCARIAN --- */}
-        <div className="flex items-center">
-          <div className="w-72 md:w-80 lg:w-96"> {/* Kelas 'w-72' diubah menjadi w-72 untuk lebar default, dan kelas responsif ditambahkan */}
+        
+        <div className="flex items-center space-x-4">
+          {/* Search Bar */}
+          <div className="w-72 md:w-80 lg:w-96 hidden md:block">
             <SearchBar />
           </div>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-white p-2 rounded-md bg-slate-800 dark:bg-gray-700 hover:bg-slate-700 dark:hover:bg-gray-600 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
         </div>
-        {/* ---------------------------------------- */}
       </div>
+      
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-slate-800 dark:bg-gray-800 p-4">
+          <div className="mb-4">
+            <SearchBar />
+          </div>
+          <div className="flex flex-col space-y-3">
+            <Link 
+              href="/" 
+              className="text-white font-bold hover:text-green-600 transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            
+            <div className="border-t border-gray-700 pt-3">
+              <h3 className="text-white font-bold mb-2">Movies</h3>
+              <div className="flex flex-col space-y-2 pl-4">
+                <Link 
+                  href="/movie/popular" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Popular
+                </Link>
+                <Link 
+                  href="/movie/now_playing" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Now Playing
+                </Link>
+                <Link 
+                  href="/movie/upcoming" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Upcoming
+                </Link>
+                <Link 
+                  href="/movie/top_rated" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Top Rated
+                </Link>
+                
+                <div className="pt-2">
+                  <h4 className="text-gray-400 text-sm font-bold mb-1">Genres</h4>
+                  <div className="grid grid-cols-2 gap-2 pl-2">
+                    {movieGenres.map((genre) => (
+                      <Link
+                        key={genre.id}
+                        href={`/movie/genre/${createSlug(genre.name)}`}
+                        className="text-xs text-gray-300 hover:text-white transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {genre.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-700 pt-3">
+              <h3 className="text-white font-bold mb-2">TV Series</h3>
+              <div className="flex flex-col space-y-2 pl-4">
+                <Link 
+                  href="/tv-show/popular" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Popular
+                </Link>
+                <Link 
+                  href="/tv-show/airing_today" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Airing Today
+                </Link>
+                <Link 
+                  href="/tv-show/on_the_air" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  On The Air
+                </Link>
+                <Link 
+                  href="/tv-show/top_rated" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Top Rated
+                </Link>
+                
+                <div className="pt-2">
+                  <h4 className="text-gray-400 text-sm font-bold mb-1">Genres</h4>
+                  <div className="grid grid-cols-2 gap-2 pl-2">
+                    {tvGenres.map((genre) => (
+                      <Link
+                        key={genre.id}
+                        href={`/tv-show/genre/${createSlug(genre.name)}`}
+                        className="text-xs text-gray-300 hover:text-white transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {genre.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* CSS untuk efek rainbow */}
       <style jsx>{`
