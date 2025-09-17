@@ -31,7 +31,7 @@ export default function Contact() {
       <div className="grid md:grid-cols-2 gap-8">
         <div className="bg-slate-800 p-6 rounded-lg text-gray-300">
           <h2 className="text-xl font-semibold text-white mb-4">Get In Touch</h2>
-          <p className="mb-4 text-justify">We'd love to hear from you! Whether you have a question, suggestion, or just want to say hello, feel free to reach out to us.</p>
+          <p className="mb-4 text-justify">We&apos;d love to hear from you! Whether you have a question, suggestion, or just want to say hello, feel free to reach out to us.</p>
           
           <div className="space-y-4 text-justify">
             <div>
@@ -132,7 +132,7 @@ export default function Contact() {
         <div className="space-y-4 text-justify">
           <div>
             <h3 className="font-semibold text-white">How do I report a technical issue?</h3>
-            <p>Please use the contact form above and select "Technical Support" as your subject, or email support@123movies.com directly.</p>
+            <p>Please use the contact form above and select &quot;Technical Support&quot; as your subject, or email support@123movies.com directly.</p>
           </div>
           
           <div>

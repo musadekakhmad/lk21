@@ -55,7 +55,7 @@ export default function TermsOfService() {
 
             <section>
               <h2 className="text-xl font-semibold text-white mb-3">9. Changes to Terms</h2>
-              <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+              <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days&apos; notice prior to any new terms taking effect.</p>
             </section>
 
             <section>

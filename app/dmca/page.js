@@ -1,7 +1,6 @@
 // app/dmca/page.js
 export default function DMCA() {
   return (
-    // HAPUS <Layout> dan </Layout> - MULAI LANGSUNG DENGAN DIV
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <h1 className="text-3xl font-bold text-white mb-6">DMCA Copyright Policy</h1>
       <div className="bg-slate-800 p-6 rounded-lg text-gray-300">
@@ -16,7 +15,7 @@ export default function DMCA() {
             <p>If you are a copyright owner, or authorized to act on behalf of one, please report alleged copyright infringements taking place on or through our website by completing the following DMCA Notice of Alleged Infringement and delivering it to our designated Copyright Agent.</p>
             
             <div className="bg-slate-700 p-4 rounded mt-3 text-justify">
-              <h3 className="font-semibold text-white mb-2">DMCA Notice of Alleged Infringement ("Notice")</h3>
+              <h3 className="font-semibold text-white mb-2">DMCA Notice of Alleged Infringement (&quot;Notice&quot;)</h3>
               <p>When delivering the Notice to us, please include the following:</p>
               <ol className="list-decimal pl-6 mt-2 space-y-1 text-justify">
                 <li>Identification of the copyrighted work that you claim has been infringed</li>
@@ -61,7 +60,6 @@ export default function DMCA() {
         </div>
       </div>
     </div>
-    // HAPUS </Layout> DI SINI
   );
 }
 
