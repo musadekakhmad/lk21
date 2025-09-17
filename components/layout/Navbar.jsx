@@ -128,15 +128,17 @@ export default function Navbar() {
     <nav className="bg-slate-900 dark:bg-gray-900 p-4 sticky top-0 z-50 shadow-lg transition-colors duration-300">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <Link href="/about" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
+          {/* Logo mengarah ke Trendingpage (/) - halaman about */}
+          <Link href="/" className="flex items-center text-3xl font-bold transition-colors duration-200 group">
             <FaVideo className="text-white mr-2 group-hover:text-yellow-200 transition-colors" />
             <span className="rainbow-text hover:text-white transition-colors">
               123Movies
             </span>
           </Link>
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/" className="text-white font-bold hover:text-green-600 transition-colors">
-              Home
+            {/* Trending mengarah ke /Trending (halaman trending) */}
+            <Link href="/Trending" className="text-white font-bold hover:text-green-600 transition-colors">
+              Trending
             </Link>
             <DropdownMenu
               title="Movies"
@@ -187,12 +189,13 @@ export default function Navbar() {
             <SearchBar />
           </div>
           <div className="flex flex-col space-y-3">
+            {/* Trending mobile - mengarah ke /Trending */}
             <Link 
-              href="/" 
+              href="/Trending" 
               className="text-white font-bold hover:text-green-600 transition-colors py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              Trending
             </Link>
             
             <div className="border-t border-gray-700 pt-3">

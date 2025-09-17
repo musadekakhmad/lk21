@@ -9,7 +9,7 @@ import {
   getMoviesByGenre
 } from '../lib/api';
 
-const BASE_URL = 'https://123movies123.page.dev';
+const BASE_URL = 'https://localhost:3000';
 
 // Fungsi utilitas untuk membuat slug
 const createSlug = (name, year) => {
@@ -99,7 +99,7 @@ export default async function sitemap() {
     // Buat URL statis, kategori, dan genre
     const staticUrls = [
       { url: `${BASE_URL}/`, lastModified: new Date() },
-      { url: `${BASE_URL}/about`, lastModified: new Date() },
+      { url: `${BASE_URL}/trending`, lastModified: new Date() },
     ];
 
     const movieCategoryUrls = movieCategories.map((category) => ({

@@ -10,8 +10,8 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="flex items-center mb-6 md:mb-0">
-            <FaVideo className="text-blue-500 text-3xl mr-3" />
-            <span className="text-2xl font-bold text-white">123Movies</span>
+           <FaVideo className="text-blue-500 text-3xl mr-3" />
+           <a href="https://123movies-lab.vercel.app" className="text-2xl font-bold text-white hover:text-red-700">123Movies</a>
           </div>
           
           <div className="flex space-x-6">

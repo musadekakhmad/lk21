@@ -232,10 +232,10 @@ export async function getTvSeriesByGenre(genreId, page = 1) {
   }
 }
 
-// Fungsi baru untuk mendapatkan film trending harian
-export async function getTrendingMoviesDaily() {
+// Fungsi untuk mendapatkan film trending harian
+export async function getTrendingMoviesDaily(page = 1) {
   try {
-    const data = await fetchApi('/trending/movie/day');
+    const data = await fetchApi(`/trending/movie/day?page=${page}`);
     return data.results;
   } catch (error) {
     console.error('Error fetching daily trending movies:', error);
@@ -243,10 +243,10 @@ export async function getTrendingMoviesDaily() {
   }
 }
 
-// Fungsi baru untuk mendapatkan serial TV trending harian
-export async function getTrendingTvSeriesDaily() {
+// Fungsi untuk mendapatkan serial TV trending harian
+export async function getTrendingTvSeriesDaily(page = 1) {
   try {
-    const data = await fetchApi('/trending/tv/day');
+    const data = await fetchApi(`/trending/tv/day?page=${page}`);
     return data.results;
   } catch (error) {
     console.error('Error fetching daily trending TV series:', error);
