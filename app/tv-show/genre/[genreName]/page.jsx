@@ -44,13 +44,13 @@ export async function generateMetadata({ params }) {
   const imageUrl = 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg';
 
   return {
-    title: `123Movies - ${title} TV Series`,
-    description: `Find and watch the best ${title} TV series for free on 123Movies.`,
+    title: `LK21 Stream - ${title} TV Series`,
+    description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
     openGraph: {
-      title: `123Movies - ${title} TV Series`,
-      description: `Find and watch the best ${title} TV series for free on 123Movies.`,
+      title: `LK21 Stream - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
       url: pageUrl,
-      siteName: '123Movies',
+      siteName: 'LK21 Stream',
       images: [
         {
           url: imageUrl,
@@ -66,8 +66,8 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       site: '@WatchStream123',
       creator: '@WatchStream123',
-      title: `123Movies - ${title} TV Series`,
-      description: `Find and watch the best ${title} TV series for free on 123Movies.`,
+      title: `LK21 Stream - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
       images: [imageUrl],
     },
     other: {
