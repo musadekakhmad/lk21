@@ -13,7 +13,7 @@ export const metadata = {
     siteName: 'LK21 Stream',
     images: [
       {
-        url: 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg',
+        url: 'https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg',
         width: 1200,
         height: 630,
         alt: 'LK21 Stream - Free HD Movies, TV Shows and Web Series',
@@ -28,7 +28,7 @@ export const metadata = {
     creator: '@WatchStream123',
     title: 'LK21 Stream | Watxh Movies and TV Series Free HD',
     description: 'LK21 Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
-    images: ['https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg'],
+    images: ['https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg'],
   },
   // Tambahkan tag meta eksplisit untuk Facebook
   other: {
