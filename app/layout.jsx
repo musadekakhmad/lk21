@@ -39,6 +39,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Tag verifikasi Google Search Console */}
+        <meta name="google-site-verification" content="43U0FE_9YdrByOFa7zNlMk0hxaMxt1P1zitJs_LBJFU" />
+      </head>
       <body>
         <AdsterraLayoutWrapper>
           <div className="flex flex-col min-h-screen bg-slate-900">
