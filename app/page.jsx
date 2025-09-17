@@ -7,25 +7,25 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>123Movies - Free HD Streaming of Movies, TV Shows and Web Series</title>
-        <meta name="description" content="123Movies offers free HD streaming of movies, TV shows and web series. Explore our comprehensive database with detailed information, reviews and trailers." />
+        <title>LK21 Stream - Watch Movies and Tv Series Free Series</title>
+        <meta name="description" content="LK21 Stream offers Watch Movies and Tv Series Free series. Explore our comprehensive database with detailed information, reviews and trailers." />
         <meta name="keywords" content="123 movies, free movie streaming, watch movies online free, free HD movies, movie database, TV series streaming, free streaming" />
-        <meta property="og:title" content="123Movies - Free HD Streaming Platform" />
-        <meta property="og:description" content="Stream movies, TV shows and web series free in HD quality on 123Movies. No registration required." />
-        <meta property="og:image" content="https://live.staticflickr.com/65535/54786910520_0740342bed_b.jpg" />
-        <meta property="og:url" content="https://123movies-lab.vercel.app/about" />
+        <meta property="og:title" content="LK21 Stream - Free HD Streaming Platform" />
+        <meta property="og:description" content="Stream movies, TV shows and web series free in HD quality on LK21 Stream. No registration required." />
+        <meta property="og:image" content="https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg" />
+        <meta property="og:url" content="https://LK21-Stream.vercel.app/about" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <div className="container mx-auto px-4 py-8 text-gray-300">
         <div className="bg-gray-800 p-8 rounded-xl shadow-lg">
           <h1 className="text-2xl md:text-3xl font-extrabold text-center mb-4 text-orange-300">
-            123Movies | Stream Movies, TV Shows and Web Series Free HD 
+            LK21 Stream | Watch Movies and Tv Series Free 
           </h1>
           <div className="mb-8 flex justify-center">
             <img
-              src="https://live.staticflickr.com/65535/54786910520_0740342bed_b.jpg"
-              alt="Film reels and movie tickets for 123Movies streaming platform"
+              src="https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg"
+              alt="Film reels and movie tickets for LK21 Stream streaming platform"
               width={1024}
               height={416}
               className="rounded-xl shadow-md"
@@ -33,35 +33,35 @@ export default function About() {
             />
           </div>
           <p className="text-center text-gray-400 mb-8">
-            123Movies is not just a streaming website; it's a comprehensive portal designed for movie and TV series enthusiasts seeking free HD content.
+            LK21 Stream is not just a streaming website; it's a comprehensive portal designed for movie and TV series enthusiasts seeking free HD content.
           </p>
 
           <nav aria-label="Breadcrumb" className="mb-6 text-sm">
             <ol className="flex flex-wrap">
               <li className="hover:text-orange-300"><a href="/">Home</a></li>
               <li className="mx-2">/</li>
-              <li aria-current="page">About 123Movies</li>
+              <li aria-current="page">About LK21 Stream</li>
             </ol>
           </nav>
 
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-4 text-orange-300">
-              What is 123Movies?
+              What is LK21 Stream?
             </h2>
             <p className="mb-4 text-justify">
-              123Movies is a revolutionary free streaming platform that provides the most complete, accessible, and always up-to-date movie and TV series database. Established with the mission to provide accurate entertainment information, we offer more than just streaming - we provide detailed titles, posters, cast information, and user reviews. We believe that every film has a story behind it, and our job is to reveal it to you. With a user-friendly interface, smart search, and intuitive navigation, your experience in exploring the cinematic world will be more enjoyable and informative. We don't just focus on Hollywood blockbuster films but also embrace the diversity of cinema from all over the world, including independent films, documentaries, and international content.
+              LK21 Stream is a revolutionary free streaming platform that provides the most complete, accessible, and always up-to-date movie and TV series database. Established with the mission to provide accurate entertainment information, we offer more than just streaming - we provide detailed titles, posters, cast information, and user reviews. We believe that every film has a story behind it, and our job is to reveal it to you. With a user-friendly interface, smart search, and intuitive navigation, your experience in exploring the cinematic world will be more enjoyable and informative. We don't just focus on Hollywood blockbuster films but also embrace the diversity of cinema from all over the world, including independent films, documentaries, and international content.
             </p>
             <p className="mb-4 text-justify">
-              We understand that in this digital era, entertainment options are often scattered across various platforms. 123Movies is here as a centralized solution for free streaming. You no longer need to jump from one site to another just to find quality content. From synopses, cast lists, crew, to ratings and reviews, we present everything in one place. Our platform is designed for all audiences, whether you are an experienced film critic, a casual viewer looking for weekend entertainment, or a student researching cinema.
+              We understand that in this digital era, entertainment options are often scattered across various platforms. LK21 Stream is here as a centralized solution for free streaming. You no longer need to jump from one site to another just to find quality content. From synopses, cast lists, crew, to ratings and reviews, we present everything in one place. Our platform is designed for all audiences, whether you are an experienced film critic, a casual viewer looking for weekend entertainment, or a student researching cinema.
             </p>
             <p className="text-justify">
-              Every detail you find on 123Movies, from release dates to interesting trivia, has been carefully curated. We are committed to maintaining the quality and accuracy of information, making it a reliable source for free movie streaming. We also optimize our site for mobile devices, ensuring you can access our content anytime and anywhere, whether you are in a cafe, traveling, or relaxing at home. 123Movies is your loyal companion on every cinematic journey.
+              Every detail you find on LK21 Stream, from release dates to interesting trivia, has been carefully curated. We are committed to maintaining the quality and accuracy of information, making it a reliable source for free movie streaming. We also optimize our site for mobile devices, ensuring you can access our content anytime and anywhere, whether you are in a cafe, traveling, or relaxing at home. LK21 Stream is your loyal companion on every cinematic journey.
             </p>
           </section>
 
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-4 text-orange-300">
-              Top Features of 123Movies
+              Top Features of LK21 Stream
             </h2>
             <ul className="list-disc list-inside space-y-4 pl-4">
               <li className="text-justify">
@@ -93,25 +93,25 @@ export default function About() {
               Our mission is to be the most trusted and easily accessible free streaming source of film and TV series information globally. We want to be a bridge between cinematic art and the audience, facilitating the discovery and appreciation of various forms of visual entertainment. Our vision is to create a digital ecosystem where premium entertainment is not only available but also accessible to everyone without financial barriers. We aspire to build a solid and passionate community, where the exchange of ideas and film recommendations is common and enjoyable.
             </p>
             <p className="text-justify">
-              We are committed to continuously innovating and adding new features that are relevant to user needs. We listen to feedback from our community and actively implement suggestions to improve this free streaming platform. This is a project that continues to evolve, and every update, whether small or large, is dedicated to you, our valuable users. We believe that with collaboration and the same spirit, we can make 123Movies the number one free site for all things related to movies and TV series.
+              We are committed to continuously innovating and adding new features that are relevant to user needs. We listen to feedback from our community and actively implement suggestions to improve this free streaming platform. This is a project that continues to evolve, and every update, whether small or large, is dedicated to you, our valuable users. We believe that with collaboration and the same spirit, we can make LK21 Stream the number one free site for all things related to movies and TV series.
             </p>
           </section>
 
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-4 text-orange-300">
-              How 123Movies is Different
+              How LK21 Stream is Different
             </h2>
             <p className="mb-4 text-justify">
-              Amidst the sea of streaming platforms, 123Movies stands out for several reasons. First, we prioritize the user experience. Our interface is designed to be minimalist and clean, free from annoying pop-up ads and unnecessary elements. We want you to focus on what matters most: movies and TV series.
+              Amidst the sea of streaming platforms, LK21 Stream stands out for several reasons. First, we prioritize the user experience. Our interface is designed to be minimalist and clean, free from annoying pop-up ads and unnecessary elements. We want you to focus on what matters most: movies and TV series.
             </p>
             <p className="mb-4 text-justify">
               Second, we are a reliable source of information because we get data directly from <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="text-orange-300 hover:underline">The Movie Database (TMDb)</a>, one of the largest and most prominent film databases in the world. This ensures that all the information you see, from the cast list to the release date, is the most accurate and up-to-date. TMDb is a global community that constantly verifies and updates data, and we are proud to be able to present this high-quality data to you.
             </p>
             <p className="mb-4 text-justify">
-              Third, we not only present movies but also TV series. This makes 123Movies a one-stop-shop for all your visual entertainment needs. You don't have to switch to other platforms to get information about your favorite TV shows. Everything is here, under one roof.
+              Third, we not only present movies but also TV series. This makes LK21 Stream a one-stop-shop for all your visual entertainment needs. You don't have to switch to other platforms to get information about your favorite TV shows. Everything is here, under one roof.
             </p>
             <p className="mb-4 text-justify">
-              Fourth, and most importantly, 123Movies provides completely free access to HD content without requiring registration or subscription. We believe that quality entertainment should be accessible to everyone regardless of their financial situation.
+              Fourth, and most importantly, LK21 Stream provides completely free access to HD content without requiring registration or subscription. We believe that quality entertainment should be accessible to everyone regardless of their financial situation.
             </p>
             <p className="text-justify">
               Lastly, we are a community-focused platform. We encourage users to interact, share reviews, and recommend films to their friends. We believe that the viewing experience is richer when shared with others. We are a place where you not only find movies but also find friends with similar interests.
@@ -123,13 +123,13 @@ export default function About() {
               SEO and Optimization for the Best Streaming Experience
             </h2>
             <p className="mb-4 text-justify">
-              We take SEO (Search Engine Optimization) seriously to ensure 123Movies is easily found by anyone looking for free movie and TV series streaming on the internet. This content is designed to cover relevant keywords such as "watch movies online free," "free movie streaming," "123 movies," "free HD movies," "most complete movie database," "latest movie reviews," "movie genres," and "free streaming information." The goal is that when someone types these keywords into Google or other search engines, 123Movies appears in the top results.
+              We take SEO (Search Engine Optimization) seriously to ensure LK21 Stream is easily found by anyone looking for free movie and TV series streaming on the internet. This content is designed to cover relevant keywords such as "watch movies online free," "free movie streaming," "123 movies," "free HD movies," "most complete movie database," "latest movie reviews," "movie genres," and "free streaming information." The goal is that when someone types these keywords into Google or other search engines, LK21 Stream appears in the top results.
             </p>
             <p className="mb-4 text-justify">
               We also optimize our website speed. With lightweight and efficient code, our pages load quickly, providing a smooth streaming experience. Site speed is an important factor in SEO and user satisfaction, and we are committed to maintaining optimal performance for buffer-free viewing.
             </p>
             <p className="mb-4 text-justify">
-              In addition, we ensure that all our content is accessible from various devices, whether it's a desktop, tablet, or mobile phone. With a responsive design, 123Movies will look and function perfectly on any screen. This is important because most internet users today access content via mobile devices.
+              In addition, we ensure that all our content is accessible from various devices, whether it's a desktop, tablet, or mobile phone. With a responsive design, LK21 Stream will look and function perfectly on any screen. This is important because most internet users today access content via mobile devices.
             </p>
             <p className="text-justify">
               We also use a clean and descriptive URL structure, which is not only readable by humans but also friendly to search engines. Each movie and TV series page has a URL that reflects its title, helping search engines understand the page content. We regularly monitor our SEO performance and make necessary adjustments to ensure our site remains competitive in the digital market and easily discoverable by users seeking free streaming options.
@@ -138,19 +138,19 @@ export default function About() {
 
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-4 text-orange-300">
-              Join the 123Movies Community
+              Join the LK21 Stream Community
             </h2>
             <p className="mb-4 text-justify">
-              123Movies is a project born from a love for movies and TV series and a belief that entertainment should be free and accessible to all. We invite you to explore our site, discover new titles, and share your experiences. This site is a testament to our dedication to providing a platform that is not only informative but also inspiring and entertaining. We will continue to work hard to bring the best content and the most advanced features to you without ever charging a fee.
+              LK21 Stream is a project born from a love for movies and TV series and a belief that entertainment should be free and accessible to all. We invite you to explore our site, discover new titles, and share your experiences. This site is a testament to our dedication to providing a platform that is not only informative but also inspiring and entertaining. We will continue to work hard to bring the best content and the most advanced features to you without ever charging a fee.
             </p>
             <p className="text-justify">
-              So, what are you waiting for? Start your cinematic adventure now! Explore our vast movie collection, find your next favorite TV series, and enjoy an unrivaled free streaming experience. We are confident you will find something new to love on 123Movies. Thank you for choosing us as your free movie streaming source. We are proud to serve you.
+              So, what are you waiting for? Start your cinematic adventure now! Explore our vast movie collection, find your next favorite TV series, and enjoy an unrivaled free streaming experience. We are confident you will find something new to love on LK21 Stream. Thank you for choosing us as your free movie streaming source. We are proud to serve you.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <a href="/movies" className="bg-orange-700 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+              <a href="/Trending" className="bg-orange-700 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
                 Browse Movies
               </a>
-              <a href="/tv-series" className="bg-blue-700 hover:bg-orange-700 text-white font-bold py-2 px-6 rounded">
+              <a href="/Trending" className="bg-blue-700 hover:bg-orange-700 text-white font-bold py-2 px-6 rounded">
                 Explore TV Series
               </a>
             </div>
@@ -173,14 +173,14 @@ export default function About() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "123Movies",
-            "url": "https://123movies-lab.vercel.app/",
+            "name": "LK21 Stream",
+            "url": "https://LK21-Stream.vercel.app/",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://123movies-lab.vercel.app/search?q={search_term_string}",
+              "target": "https://LK21-Stream.vercel.app/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             },
-            "description": "Free HD streaming of movies, TV shows and web series without registration"
+            "description": "Watch Movies and Tv Series Free series without registration"
           })
         }}
       />

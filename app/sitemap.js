@@ -9,7 +9,7 @@ import {
   getMoviesByGenre
 } from '../lib/api';
 
-const BASE_URL = 'https://localhost:3000';
+const BASE_URL = 'https://lk21-stream.vercel.app';
 
 // Fungsi utilitas untuk membuat slug
 const createSlug = (name, year) => {

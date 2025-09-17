@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
 
   const title = genre?.name || 'Unknown';
   
-  const pageUrl = `https://123movies123.vercel.app/tv-show/genre/${genreName}`;
+  const pageUrl = `https://LK21-Stream.vercel.app/tv-show/genre/${genreName}`;
   const imageUrl = 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg';
 
   return {

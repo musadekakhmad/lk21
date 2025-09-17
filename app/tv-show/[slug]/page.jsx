@@ -54,12 +54,12 @@ export async function generateMetadata({ params }) {
 
   if (genreSlugMap.has(processedSlug)) {
     const genre = genreSlugMap.get(processedSlug);
-    return { title: `123Movies - ${genre.name} TV Series` };
+    return { title: `LK21 Stream - ${genre.name} TV Series` };
   }
 
   if (CATEGORIES.includes(slug)) {
     const title = slug.replace(/_/g, ' ').toUpperCase();
-    return { title: `123Movies - ${title} TV Series` };
+    return { title: `LK21 Stream - ${title} TV Series` };
   }
 
   // Logika untuk mengambil data TV show untuk metadata detail
@@ -98,13 +98,13 @@ export async function generateMetadata({ params }) {
   const socialImageAlt = `${tvShowData.name} poster`;
 
   return {
-    title: `123Movies - ${tvShowData.name}`,
+    title: `LK21 Stream - ${tvShowData.name}`,
     description: tvShowData.overview,
     openGraph: {
       title: tvShowData.name,
       description: tvShowData.overview,
-      url: `https://123movies123.vercel.app/tv-show/${slug}`,
-      siteName: '123Movies',
+      url: `https://LK21-Stream.vercel.app/tv-show/${slug}`,
+      siteName: 'LK21 Stream',
       images: [{ url: socialImage, width: 1200, height: 630, alt: socialImageAlt }],
       locale: 'en_US',
       type: 'website',
