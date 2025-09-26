@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
 	  <head>
         {/* Tag verifikasi Google Search Console */}
-        <meta name="google-site-verification" content="Op253moeSLgz53Zc2b4oZ0oc088akfDPrQLeRsQA008" />
+        <meta name="google-site-verification" content="43U0FE_9YdrByOFa7zNlMk0hxaMxt1P1zitJs_LBJFU" />
       </head>
       <body>
         <AdsterraLayoutWrapper>
