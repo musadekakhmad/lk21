@@ -39,8 +39,8 @@ export async function generateMetadata({ params }) {
   if (CATEGORIES.includes(slug)) {
     const title = slug.replace(/_/g, ' ').toUpperCase();
     return {
-      title: `Fmovies - ${title} Movies`,
-      description: `Explore the ${title} movies collection on Fmovies.`,
+      title: `LK21 Gratis - ${title} Movies`,
+      description: `Explore the ${title} movies collection on LK21 Gratis.`,
     };
   }
 
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }) {
     const genres = await getMovieGenres();
     const genreName = genres.find(g => g.id == genreId)?.name || 'Unknown';
     return {
-      title: `Fmovies - ${genreName} Movies`,
-      description: `Discover ${genreName} movies on Fmovies.`,
+      title: `LK21 Gratis - ${genreName} Movies`,
+      description: `Discover ${genreName} movies on LK21 Gratis.`,
     };
   }
 
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }) {
   // Jika data tidak ditemukan, kembalikan metadata dasar
   if (!movieData) {
     return {
-      title: 'LK21  Stream',
+      title: 'LK21 Gratis',
       description: 'Find your favorite movies to stream.',
     };
   }
@@ -99,13 +99,13 @@ export async function generateMetadata({ params }) {
   const socialImageAlt = `${movieData.title} poster`;
 
   return {
-    title: `LK21  Stream - ${movieData.title}`,
+    title: `LK21 Gratis - ${movieData.title}`,
     description: movieData.overview || `Detailed information for movie ${movieData.title}`,
     openGraph: {
       title: movieData.title,
       description: movieData.overview || `Detailed information for movie ${movieData.title}`,
-      url: `https://LK21-Stream.vercel.app/movie/${slug}`,
-      siteName: 'LK21  Stream',
+      url: `https://lk21-gratis.app/movie/${slug}`,
+      siteName: 'LK21 Gratis',
       images: [
         {
           url: socialImage,

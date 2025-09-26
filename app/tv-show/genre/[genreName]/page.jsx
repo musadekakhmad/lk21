@@ -40,17 +40,17 @@ export async function generateMetadata({ params }) {
 
   const title = genre?.name || 'Unknown';
   
-  const pageUrl = `https://LK21-Stream.vercel.app/tv-show/genre/${genreName}`;
-  const imageUrl = 'https://live.staticflickr.com/65535/54783431146_cea3af132d_b.jpg';
+  const pageUrl = `https://lk21-gratis.vercel.app/tv-show/genre/${genreName}`;
+  const imageUrl = 'https://live.staticflickr.com/65535/54791981397_063e679112_b.jpg';
 
   return {
-    title: `LK21 Stream - ${title} TV Series`,
-    description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
+    title: `LK21 Gratis - ${title} TV Series`,
+    description: `Find and watch the best ${title} TV series for free on LK21 Gratis.`,
     openGraph: {
-      title: `LK21 Stream - ${title} TV Series`,
-      description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
+      title: `LK21 Gratis - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on LK21 Gratis.`,
       url: pageUrl,
-      siteName: 'LK21 Stream',
+      siteName: 'LK21 Gratis',
       images: [
         {
           url: imageUrl,
@@ -66,8 +66,8 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       site: '@WatchStream123',
       creator: '@WatchStream123',
-      title: `LK21 Stream - ${title} TV Series`,
-      description: `Find and watch the best ${title} TV series for free on LK21 Stream.`,
+      title: `LK21 Gratis - ${title} TV Series`,
+      description: `Find and watch the best ${title} TV series for free on LK21 Gratis.`,
       images: [imageUrl],
     },
     other: {

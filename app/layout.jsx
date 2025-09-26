@@ -4,19 +4,19 @@ import Footer from '../components/layout/Footer';
 import AdsterraLayoutWrapper from '../components/AdsterraLayoutWrapper';
 
 export const metadata = {
-  title: 'LK21 Stream | Watch Movies and TV Series Free HD ',
-  description: 'LK21 Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+  title: 'LK21 Gratis | Watch Movie Stream Movies and Tv Series Free ',
+  description: 'LK21 Gratis is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
   openGraph: {
-    title: 'LK21 Stream | Watch Movies and TV Series Free HD',
-    description: 'LK21 Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
-    url: 'https://LK21-Stream1.vercel.app',
-    siteName: 'LK21 Stream',
+    title: 'LK21 Gratis | Watch Movie Stream Movies and Tv Series Free',
+    description: 'LK21 Gratis is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today! ',
+    url: 'https://lk21-gratis.vercel.app',
+    siteName: 'LK21 Gratis',
     images: [
       {
-        url: 'https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg',
+        url: 'https://live.staticflickr.com/65535/54791981397_063e679112_b.jpg',
         width: 1200,
         height: 630,
-        alt: 'LK21 Stream - Free HD Movies, TV Shows and Web Series',
+        alt: 'LK21 Gratis - Watch Movie Stream Movies and Tv Series Free',
       },
     ],
     locale: 'en_US',
@@ -26,9 +26,9 @@ export const metadata = {
     card: 'summary_large_image',
     site: '@WatchStream123',
     creator: '@WatchStream123',
-    title: 'LK21 Stream | Watch Movies and TV Series Free HD',
-    description: 'LK21 Stream is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
-    images: ['https://live.staticflickr.com/65535/54791981402_5d33da66b5_b.jpg'],
+    title: 'LK21 Gratis | Watch Movie Stream Movies and Tv Series Free',
+    description: 'LK21 Gratis is your one-stop destination for free movies, TV shows, and web series. Download thousands of titles in HD quality, with unlimited access to the latest blockbusters and trending series. Start your free entertainment journey today!',
+    images: ['https://live.staticflickr.com/65535/54791981397_063e679112_b.jpg'],
   },
   // Tambahkan tag meta eksplisit untuk Facebook
   other: {
@@ -39,9 +39,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+	  <head>
         {/* Tag verifikasi Google Search Console */}
-        <meta name="google-site-verification" content="43U0FE_9YdrByOFa7zNlMk0hxaMxt1P1zitJs_LBJFU" />
+        <meta name="google-site-verification" content="Op253moeSLgz53Zc2b4oZ0oc088akfDPrQLeRsQA008" />
       </head>
       <body>
         <AdsterraLayoutWrapper>

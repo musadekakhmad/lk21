@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="flex items-center mb-6 md:mb-0">
            <FaVideo className="text-blue-500 text-3xl mr-3" />
-           <a href="https://LK21-Stream.vercel.app" className="text-2xl font-bold text-white hover:text-red-700">LK21 Stream</a>
+           <a href="https://lk21-gratis.vercel.app" className="text-2xl font-bold text-white hover:text-red-600">LK21 Gratis</a>
           </div>
           
           <div className="flex space-x-6">
@@ -46,7 +46,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0">
-            <p className="text-sm">&copy; {year} LK21 Stream. All rights reserved.</p>
+            <p className="text-sm">&copy; {year} LK21 Gratis. All rights reserved.</p>
             <p className="text-xs mt-2 text-gray-500">
               Made with <FaHeart className="inline text-red-500" /> by movie lovers
             </p>
@@ -82,7 +82,7 @@ export default function Footer() {
             </a>
           </p>
           <p className="text-xs text-gray-500 mt-2">
-            Disclaimer: LK21 Stream does not host any videos or content on its server. All content is provided by non-affiliated third parties.
+            Disclaimer: LK21 Gratis does not host any videos or content on its server. All content is provided by non-affiliated third parties.
           </p>
           
           <div className="mt-4 flex items-center justify-center text-sm text-gray-400 hover:text-blue-400 transition-colors">

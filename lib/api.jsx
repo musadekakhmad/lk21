@@ -253,3 +253,41 @@ export async function getTrendingTvSeriesDaily(page = 1) {
     return [];
   }
 }
+
+// Fungsi untuk mendapatkan film berdasarkan keyword ID (erotic)
+export async function getMoviesByKeyword(keywordId = 256466, page = 1) {
+  try {
+    console.log(`Fetching movies by keyword: ${keywordId}, page: ${page}`);
+    const data = await fetchApi(`/discover/movie?with_keywords=${keywordId}&page=${page}`);
+    console.log(`Movies by keyword result:`, data.results?.length || 0);
+    return data.results || [];
+  } catch (error) {
+    console.error(`Error fetching movies by keyword ID ${keywordId}:`, error);
+    return [];
+  }
+}
+
+// Fungsi untuk mendapatkan film dari list ID (adult)
+export async function getMoviesByList(listId = "143347", page = 1) {
+  try {
+    console.log(`Fetching movies from list: ${listId}, page: ${page}`);
+    const data = await fetchApi(`/list/${listId}?page=${page}`);
+    console.log(`Movies from list result:`, data.items?.length || 0);
+    return data.items || [];
+  } catch (error) {
+    console.error(`Error fetching movies from list ID ${listId}:`, error);
+    return [];
+  }
+}
+
+// Fungsi untuk membuat slug dari judul
+export const createSlug = (title) => {
+  if (!title) return '';
+  
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, '') // Hapus karakter tidak valid
+    .replace(/\s+/g, '-') // Ganti spasi dengan dash
+    .replace(/-+/g, '-') // Gabungkan multiple dash
+    .trim();
+};

@@ -1,23 +1,43 @@
-// app/Home/page.jsx
+// app/trending/page.jsx
 import { getTrendingMoviesDaily, getTrendingTvSeriesDaily } from '../../lib/api';
 import TrendingClient from './page-client';
-import Head from 'next/head';
+
+// ✅ Konfigurasi caching yang tepat
+export const revalidate = 3600; // 1 jam
 
 export default async function TrendingPage() {
-  const [trendingMovies, trendingTvSeries] = await Promise.all([
-    getTrendingMoviesDaily(1), // Tambahkan parameter page 1
-    getTrendingTvSeriesDaily(1) // Tambahkan parameter page 1
-  ]);
+  try {
+    // ✅ Gunakan Promise.allSettled untuk error handling
+    const [moviesResult, tvSeriesResult] = await Promise.allSettled([
+      getTrendingMoviesDaily(1),
+      getTrendingTvSeriesDaily(1)
+    ]);
 
-  return (
-    <>
-      <Head>
-        <title>Daily Trending - LK21 Stream</title>
-      </Head>
+    // Extract data dengan error handling
+    const trendingMovies = moviesResult.status === 'fulfilled' ? moviesResult.value : [];
+    const trendingTvSeries = tvSeriesResult.status === 'fulfilled' ? tvSeriesResult.value : [];
+
+    return (
       <TrendingClient 
         initialMovies={trendingMovies} 
         initialTvSeries={trendingTvSeries} 
       />
-    </>
-  );
+    );
+  } catch (error) {
+    console.error('Error in TrendingPage:', error);
+    
+    // Return empty data jika error
+    return (
+      <TrendingClient 
+        initialMovies={[]} 
+        initialTvSeries={[]} 
+      />
+    );
+  }
 }
+
+// ✅ Tambahkan metadata untuk SEO
+export const metadata = {
+  title: 'Daily Trending - LK21 Gratis',
+  description: 'Discover daily trending movies and TV series on LK21 Gratis',
+};
