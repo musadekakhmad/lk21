@@ -104,7 +104,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: movieData.title,
       description: movieData.overview || `Detailed information for movie ${movieData.title}`,
-      url: `https://lk21-gratis.app/movie/${slug}`,
+      url: `https://lk21-gratis.vercel.app/movie/${slug}`,
       siteName: 'LK21 Gratis',
       images: [
         {
